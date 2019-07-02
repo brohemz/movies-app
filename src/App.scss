@@ -1,12 +1,24 @@
+
+// Sass Variables
+$body-background: #D8A5FF;
+$primary-color: #9103FF;
+$accent-color: #845EF3;
+
+// Sass - Button Colors
+$button-primary-color: #7C34B3;
+
 html, body, .App {
   margin: 0;
   padding: 0;
-  max-width: 100vw;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: $body-background;
 }
 body, .App {
 	display: flex;
-	min-height: 100vh;
 	flex-direction: column;
+	font-size: 20px;
+	justify-content: center;
 }
 
 .App {
@@ -36,9 +48,9 @@ body, .App {
 
 /* Line Break */
 .line-break{
-	min-width: 100vh;
-	height: 10px;
-	background-color: gray;
+	min-width: 100vw;
+	height: 3px;
+	background-color: $accent-color;
 }
 
 /* App layout */
@@ -47,13 +59,17 @@ body, .App {
 	display: flex;
 	justify-content: center;
 	flex: 1;
+	margin: 1em;
 }
 
 .flex-item{
-	margin: 5em;
-	padding: 2em;
+	margin: 2em;
 	max-width: 50vw;
 	min-width: 20vw;
+}
+
+.flex-item-filter{
+	max-height: 30vh;
 }
 
 /* Filter */
@@ -71,16 +87,44 @@ body, .App {
 
 /* Movie item */
 
-.movie_item p{
+.movie_item #description{
 	max-width: 25vw;
 }
 
 
+/* Header */
+
+.header{
+	background-color: $primary-color;
+	min-width: 100vw;
+}
 
 /* Footer */
 
 .footer{
 	min-height: 50px;
+	min-width: 100vw;
+	background-color: $primary-color;
+}
+
+/* Buttons */
+.button {
+	color: white;
+	font-size: 1.2em;
+	border-radius: 7px;
+	border: 2px solid $accent-color;
+	padding: 0.5em;
+	transition: 0.3s;
+}
+
+.button:hover{
+	opacity: 0.8;
+	box-shadow:2px 5px 10px $accent-color;
+
+}
+
+.button-primary {
+	background-color: $button-primary-color;
 }
 
 
@@ -100,6 +144,26 @@ body, .App {
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
+		min-width: 100vw;
+		min-height: 100vh;
+		max-width: 100vw;
+		max-height: 100vh;
+		margin-top: 10px;
+	}
+
+	.flex-item {
+		max-width: 100vw;
+		min-width: 80vw;
+	}
+
+	.flex-item-filter {
+		height: 20vh
+	}
+
+	.movie_item #description{
+		min-width: 50vw;
+		max-width: 98vw;
+		padding: 2vw;
 	}
 
 }

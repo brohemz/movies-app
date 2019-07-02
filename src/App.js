@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import Header from './Components/Header.js'
 import Footer from './Components/Footer.js'
 import Movie_item from './Components/Movie_item.js'
@@ -139,13 +139,13 @@ class App extends React.Component {
       <div className="App">
   		< Header />
 		<div className="flex-container">
-			<div className="flex-item">
+			<div className="flex-item flex-item-filter">
 				< Filter props={{filter: this.filter}} />
 			</div>
-			<p className="flex-item">
-			  <button onClick={() => this.handleUpdate({random_movie_item: this.random_movie()})}> Roll </button>
+			<div className="flex-item">
+			  <button onClick={() => this.handleUpdate({random_movie_item: this.random_movie()})} className="button button-primary"> Roll </button>
 			  <Movie_item props={{movie: this.state.random_movie_item}} />
-			</p>
+			</div>
 		</div>
 
 		< Footer />

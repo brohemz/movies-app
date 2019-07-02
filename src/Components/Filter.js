@@ -32,7 +32,7 @@ class Filter extends React.Component {
   }
 
   render(){
-	var button_filter = <button onClick={this.flipVisibility}> Filter </button>
+	var button_filter = <button onClick={this.flipVisibility} className="button button-primary"> Filter </button>
 
     if(!this.state.hidden){
 		return (
@@ -58,7 +58,7 @@ class Filter extends React.Component {
 					<input name="year" type="radio" onChange={this.handleChange} value="2010"/> 2010s
 				</label>
 				<br />
-			  <input type="submit" value="Update" />
+			  <input type="submit" value="Update"/>
 	        </form>
 	      </div>
 	    );

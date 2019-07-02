@@ -18,9 +18,9 @@ function Movie_item(props){
 	  <div>
 	  	{poster}
 	  </div>
-	  <p>
+	  <div id="description">
 	  	{description}
-	  </p>
+	  </div>
     </div>
   );
 }

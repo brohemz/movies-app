@@ -117,7 +117,7 @@ body, .App {
 	transition: 0.3s;
 }
 
-.button:hover, .button:active{
+.button:hover{
 	opacity: 0.8;
 	box-shadow:2px 5px 10px $accent-color;
 
@@ -157,6 +157,21 @@ body, .App {
 	.flex-item-filter {
 		height: 20%
 	}
+
+	.button:hover{
+		box-shadow: none;
+		opacity: 1;
+	}
+
+	.button:active{
+		opacity: 0.8;
+		box-shadow:2px 5px 10px $accent-color;
+	}
+
+	.button {
+		transition: 0.1s;
+	}
+
 
 	.movie_item #description{
 		min-width: 50%;

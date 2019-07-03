@@ -14,8 +14,8 @@ function Movie_item(props){
   }
   return (
     <div className= "movie_item">
-      <h3> {props.props.movie !== undefined ? props.props.movie.title : "Roll the Dice!"} </h3>
-	  <div>
+      <h3> {props.props.movie !== undefined ? props.props.movie.title + ` (${props.props.movie.release_date}) ` : "Roll the Dice!"} </h3>
+    <div>
 	  	{poster}
 	  </div>
 	  <div id="description">

@@ -146,14 +146,12 @@ body, .App {
 		flex-direction: column;
 		min-width: 100vw;
 		min-height: 100vh;
-		max-width: 100vw;
-		max-height: 100vh;
 		margin-top: 10px;
 	}
 
 	.flex-item {
 		max-width: 100vw;
-		min-width: 80vw;
+    min-width: 80vw;
 	}
 
 	.flex-item-filter {

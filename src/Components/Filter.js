@@ -7,7 +7,8 @@ class Filter extends React.Component {
     super(props)
     this.state = {
       year: 2010,
-	  hidden: true
+      genres: this.props.props.genres,
+	    hidden: true
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,14 +18,15 @@ class Filter extends React.Component {
 
   handleChange(event){
     // this.setState({year: event.target.value}, () => this.props.props.filter(this.state));
-	this.setState({year: parseInt(event.target.value), hidden: this.state.hidden});
+	this.setState({year: parseInt(event.target.value), genre: "comedy", hidden: this.state.hidden});
+  console.log(event.target);
   }
 
   handleSubmit(event){
     // alert("Year Changed: " + this.state.year);
     event.preventDefault();
-	this.props.props.filter(this.state);
-	this.flipVisibility();
+	  this.props.props.filter(this.state);
+	  this.flipVisibility();
   }
 
   flipVisibility(){

@@ -18,7 +18,9 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
     this.filter = this.filter.bind(this);
-	this.random_movie = this.random_movie.bind(this);
+	  this.random_movie = this.random_movie.bind(this);
+    this.get_movies = this.get_movies.bind(this);
+    this.get_genres = this.get_genres.bind(this);
   }
 
   handleChange(res){
@@ -35,6 +37,18 @@ class App extends React.Component {
 
   componentDidMount(){
     this.get_movies().then(res => this.handleChange({movies: res}));
+  }
+
+  get_genres(){
+    const api_url = "https://api.themoviedb.org/3/genre/movie/list";
+
+    const parameters = {
+      api_key : 'f3c134e0862454196cdaab3f54ba99fc',
+    }
+
+    const genres = axios.get(api_url, {
+      params: parameters
+    }).then(res => {return res});
   }
 
   get_movies(props){
@@ -58,7 +72,7 @@ class App extends React.Component {
   // Fix: Page Limit Needed
 	for(let page = 1; page <= 5; page += 1){
 		ax.push(axios.get(api_url + "&page="+page, {
-		      params : parameters
+		      params: parameters
 		    }).then(res => {
 		      return res;
 		  })
@@ -99,22 +113,22 @@ class App extends React.Component {
 
   filter(props){
 
-	let state = {};
-	// Filters
-	state['primary_release_date.gte'] = props.year;
-	state['primary_release_date.lte'] = props.year < 2010 ? (props.year + 10) : 2019;
+  	let state = {};
+  	// Filters
+  	state['primary_release_date.gte'] = props.year;
+  	state['primary_release_date.lte'] = props.year < 2010 ? (props.year + 10) : 2019;
 
 
 
-	this.get_movies(state).then(data => {
-		this.setState(() => {
-			console.log(data);
-			state['movies'] = data;
-			state['promise-resolved'] = true;
-			console.log(state)
-			return state;
-		})
-	});
+  	this.get_movies(state).then(data => {
+  		this.setState(() => {
+  			console.log(data);
+  			state['movies'] = data;
+  			state['promise-resolved'] = true;
+  			console.log(state)
+  			return state;
+  		})
+  	});
   }
 
   random_movie(){
@@ -125,6 +139,8 @@ class App extends React.Component {
 		  return movieList[rand];
 	  }
   }
+
+
 
 
 
@@ -140,7 +156,7 @@ class App extends React.Component {
   		< Header />
 		<div className="flex-container">
 			<div className="flex-item flex-item-filter">
-				< Filter props={{filter: this.filter}} />
+				< Filter props={{filter: this.filter, genres: this.get_genres()}} />
 			</div>
 			<div className="flex-item">
 			  <button onClick={() => this.handleUpdate({random_movie_item: this.random_movie()})} className="button button-primary"> Roll </button>

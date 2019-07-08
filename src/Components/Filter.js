@@ -7,19 +7,35 @@ class Filter extends React.Component {
     super(props)
     this.state = {
       year: 2010,
-      genres: this.props.props.genres,
+      genre_list: this.props.props.genres,
+      genre: {id: 0, name: "None"},
 	    hidden: true
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-	this.flipVisibility = this.flipVisibility.bind(this);
+	  this.flipVisibility = this.flipVisibility.bind(this);
+    this.getGenreID = this.getGenreID.bind(this);
 }
 
+  getGenreID(genre){
+    return {id: this.state.genre_list[genre], name: genre};
+  }
+
   handleChange(event){
-    // this.setState({year: event.target.value}, () => this.props.props.filter(this.state));
-	this.setState({year: parseInt(event.target.value), genre: "comedy", hidden: this.state.hidden});
-  console.log(event.target);
+
+    let persist_event = event.target;
+
+    this.setState(prevState => {
+      let newState = prevState;
+      if(persist_event.name === "year"){
+        newState.year = parseInt(persist_event.value);
+      }else if(persist_event.name === "genre"){
+        newState.genre = this.getGenreID(persist_event.value);
+      }
+      return newState
+    })
+
   }
 
   handleSubmit(event){
@@ -60,6 +76,19 @@ class Filter extends React.Component {
 					<input name="year" type="radio" onChange={this.handleChange} value="2010"/> 2010s
 				</label>
 				<br />
+        <p>
+          Genre: {this.state.genre.name}
+        </p>
+        <label>
+          <input type="button" name="genre" onClick={this.handleChange} value="Action" />
+        </label>
+        <label>
+          <input type="button" name="genre" onClick={this.handleChange} value="Comedy" />
+        </label>
+        <label>
+          <input type="button" name="genre" onClick={this.handleChange} value="Romance" />
+        </label>
+        <br />
 			  <input type="submit" value="Update"/>
 	        </form>
 	      </div>

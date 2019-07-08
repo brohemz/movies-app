@@ -40,15 +40,14 @@ class App extends React.Component {
   }
 
   get_genres(){
-    const api_url = "https://api.themoviedb.org/3/genre/movie/list";
+    const genre_list =
+      {
+        "Action" : 28,
+        "Comedy" : 35,
+        "Romance" : 10749
+      }
 
-    const parameters = {
-      api_key : 'f3c134e0862454196cdaab3f54ba99fc',
-    }
-
-    const genres = axios.get(api_url, {
-      params: parameters
-    }).then(res => {return res});
+    return genre_list;
   }
 
   get_movies(props){
@@ -118,6 +117,10 @@ class App extends React.Component {
   	state['primary_release_date.gte'] = props.year;
   	state['primary_release_date.lte'] = props.year < 2010 ? (props.year + 10) : 2019;
 
+    if(props.genre.id !== 0){
+      state['with_genres'] = props.genre.id;
+    }
+
 
 
   	this.get_movies(state).then(data => {
@@ -160,7 +163,7 @@ class App extends React.Component {
 			</div>
 			<div className="flex-item">
 			  <button onClick={() => this.handleUpdate({random_movie_item: this.random_movie()})} className="button button-primary"> Roll </button>
-			  <Movie_item props={{movie: this.state.random_movie_item}} />
+			  <Movie_item props={{movie: this.state.random_movie_item, genres: this.get_genres()}} />
 			</div>
 		</div>
 

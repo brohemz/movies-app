@@ -57,7 +57,6 @@ h3 {
 
 .flex-item{
 	margin: 2em;
-	max-width: 30vw;
 	min-width: 20vw;
 }
 
@@ -149,7 +148,8 @@ h3 {
 	}
 
 	.flex-item-filter {
-		height: 20%
+		min-height: 20%;
+    max-height: 30%;
 	}
 
 	.button:hover{

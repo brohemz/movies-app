@@ -73,11 +73,11 @@ class Filter extends React.Component {
 					<input name="year" type="radio" onChange={this.handleChange} value="2000"/> 2000s
 				</label>
 				<label>
-					<input name="year" type="radio" onChange={this.handleChange} value="2010"/> 2010s
+					<input name="year" type="radio" onChange={this.handleChange} value="2010" checked={this.state.year === 2010 ? "checked" : ""}/> 2010s
 				</label>
 				<br />
         <p>
-          Genre: {this.state.genre.name}
+          {this.state.genre.name !== "None"? `Genre: ${this.state.genre.name}` : "No Genre Selected"}
         </p>
         <label>
           <input type="button" name="genre" onClick={this.handleChange} value="Action" />
@@ -89,7 +89,7 @@ class Filter extends React.Component {
           <input type="button" name="genre" onClick={this.handleChange} value="Romance" />
         </label>
         <br />
-			  <input type="submit" value="Update"/>
+			    <input type="submit" value="✓"/>
 	        </form>
 	      </div>
 	    );

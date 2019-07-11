@@ -21,7 +21,7 @@ function Movie_item(props){
 
   if(props.props.movie !== undefined){
 	  poster = <img src={poster_path_base + props.props.movie.poster_path} alt="No Poster Available" />;
-	  description = props.props.movie.overview;
+	  description = <div> <h4> Description </h4> {props.props.movie.overview} </div>;
     genre = genreMatch(props.props.movie.genre_ids, props.props.genres);
   }
 

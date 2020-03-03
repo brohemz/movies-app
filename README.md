@@ -1,3 +1,5 @@
+## movies-app is a react-based movie randomizer (for those times where you just can't pick).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

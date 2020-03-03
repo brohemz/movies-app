@@ -58,13 +58,14 @@ class App extends React.Component {
     }
 
     if(props !== undefined){
-		const filters_to_add = Object.entries(props);
-		filters_to_add.forEach((obj) => {
-			parameters[obj[0]] = obj[1];
-		});
+  		const filters_to_add = Object.entries(props);
+      // const filters_to_add = Object.entries({ 'genre' : '10749', 'primary_release_date.lte': '1990-01-01', 'primary_release_date.gte':'1980-02-01'})
+  		filters_to_add.forEach((obj) => {
+        parameters[obj[0]] = obj[1].toString();
+  		});
     }
 
-
+    console.log(parameters)
 
 	const ax = [];
 
@@ -114,11 +115,11 @@ class App extends React.Component {
 
   	let state = {};
   	// Filters
-  	state['primary_release_date.gte'] = props.year;
-  	state['primary_release_date.lte'] = props.year < 2010 ? (props.year + 10) : 2019;
+  	state['primary_release_date.gte'] = `${props.year}-01-01`;
+    state['primary_release_date.lte'] = `${props.year < 2010 ? (props.year + 9) : 2019}-12-31`;
 
     if(props.genre.id !== 0){
-      state['with_genres'] = props.genre.id;
+      state['genre'] = props.genre.id;
     }
 
 
